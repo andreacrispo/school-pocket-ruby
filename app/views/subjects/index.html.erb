@@ -2,7 +2,7 @@
 
 <div class="page-header">
    <h1>  Subjects
-    <a href="{{ url_for('main.action_subject') }}" class="btn btn-primary pull-right" > {{ _('Add Subject') }} </a>
+    <%= link_to "Add Subject", new_subject_path, class:"btn btn-primary pull-right" %>
    </h1>
 </div>
 
@@ -15,17 +15,21 @@
       	<div class="well-lg panel panel-default shadow-z-4">
         	<div class="panel-body">
             <h4>
-         		<%= subject.subject %>
+         		<%= subject.name %>
          		<div class='btn-group pull-right'>
-         			<a class='btn btn-primary'  href="{{ url_for('main.action_subject',   id=subject.id) }}" data-toggle="modal" > <i class='glyphicon glyphicon-pencil'></i> </a>
-            	<a class='btn btn-primary'  href="{{ url_for('main.delete_subject', id=subject.id) }}" > <i class='glyphicon glyphicon-trash'></i></a>
+              <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
+                   <i class="glyphicon glyphicon-pencil"></i>
+              <% end %>
+              <%= link_to subject , method: :delete, class:'btn btn-primary' do %>
+                   <i class="glyphicon glyphicon-trash"></i>
+              <% end %>
             	</div>
             </h4>
         	</div>
       	</div>
        <% end %>
-  <%else %>
-    <h3>Nessuna materia presente</h3>
+  <% else %>
+    <h3>No Subjects</h3>
   <% end %>
 
 
