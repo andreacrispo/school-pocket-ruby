@@ -7,33 +7,35 @@
 </div>
 
 
-  <div class="col-md-4"></div>
+   <div class="col-md-4"></div>
 
-  <div class="col-md-4">
-  <% if @subjects.any? %>
-      <%= @subjects.each do |subject|  %>
-      	<div class="well-lg panel panel-default shadow-z-4">
-        	<div class="panel-body">
+   <div class="col-md-4">
+    <% if @subjects.any? %>
+       
+        <% @subjects.each do |subject|  %>
+          <div class="well-lg panel panel-default shadow-z-4">
+           <div class="panel-body">
             <h4>
-         		<%= subject.name %>
-         		<div class='btn-group pull-right'>
-              <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
-                   <i class="glyphicon glyphicon-pencil"></i>
-              <% end %>
-              <%= link_to subject , method: :delete, class:'btn btn-primary' do %>
-                   <i class="glyphicon glyphicon-trash"></i>
-              <% end %>
-            	</div>
+             <%= subject.name %>
+              <div class='btn-group pull-right'>
+                <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
+                     <i class="glyphicon glyphicon-pencil"></i>
+                <% end %>
+                <%= link_to subject , method: :delete, class:'btn btn-primary' do %>
+                     <i class="glyphicon glyphicon-trash"></i>
+                <% end %>
+              </div>
             </h4>
-        	</div>
-      	</div>
-       <% end %>
-  <% else %>
+           </div>
+          </div>
+      <% end %>
+    <% else %>
     <h3>No Subjects</h3>
-  <% end %>
+    <% end %>
 
+   </div>
 
-</div> <!-- /col-md-4 -->
-
-  <div class="col-md-4"></div>
+   <div class="col-md-4"></div>
 </div> <!-- /rows -->
+
+
