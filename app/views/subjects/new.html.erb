@@ -6,9 +6,7 @@
 	<div class="col-md-4"></div>
 	<div class="col-md-4 well shadow-z-4">
 	<%= form_for @subject do |f| %>
-		<%= f.label :name %>
-		<%= f.text_field  :name, class: 'form-control' %>
-		<%= f.submit "Add", class: "btn btn-primary" %>
+		<%= render 'field_form', f:f, submit_string:"Add subject" %>
 	<% end %>
 	</div>
 	<div class="col-md-4"></div>
