@@ -1,0 +1,24 @@
+<div class="page-header">
+<h1></h1>
+</div>
+
+<div class='row'> 
+	<div class="col-md-4"></div>
+	<div class="col-md-4 well shadow-z-4">
+	<%= form_for @grade do |f| %>
+		<%= render 'shared/error_msg', object: f.object %>
+		<%= f.label :grade %>
+		<%= f.number_field  :grade, class: 'form-control' %>
+
+		<%= f.label :subject_id %>
+		<%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {:class=>'form-control'})  %>
+		<%= f.label :date %>
+		<%= f.date_field  :date, class: 'form-control' %>
+		<%= f.label :description %>
+		<%= f.text_area  :description, class: 'form-control' %>			
+		<%= f.submit "Add", class: "btn btn-primary" %>
+	<% end %>
+	</div>
+	<div class="col-md-4"></div>
+
+</div>

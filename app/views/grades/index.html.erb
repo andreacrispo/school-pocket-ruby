@@ -1,0 +1,57 @@
+<div class="row">
+
+<div class="page-header">
+   <h1>  Grades
+    <%= link_to "Add Grade", new_grade_path, class:"btn btn-primary pull-right" %>
+   </h1>
+</div>
+
+
+   <div class="col-md-12">
+    <% if @grades.any? %>
+
+		<table  class="table table-bordered" >
+		<thead>
+		    <tr>  
+		        <th>Date</th> 
+		        <th>Grade</th>
+		        <th>Description</th>   
+		        <th  class="col-md-2" id='no_style' ></th>  
+		    </tr>
+		</thead>
+		<tbody>
+
+		<% @subjects.each do |subject| %>
+			  <tr>  
+			  <th colspan='4' ><%= subject.name %> </th>
+			  </tr>
+			<% @grades.each do |grade| %>
+			<% if subject.id == grade.subject_id %>
+		    <tr>  
+		        <td> <%= grade.date %> </td> 
+		        <td> <%= grade.grade%>  </td>
+		        <td><%=  grade.description%></td> 
+		        <td id='no_style'> 
+		          <div class='btn-group' >
+			                <%= link_to edit_grade_path(grade), class:'btn btn-primary' do %>
+			                     <i class="glyphicon glyphicon-pencil"></i>
+			                <% end %>
+			                <%= link_to grade , method: :delete, class:'btn btn-primary' do %>
+			                     <i class="glyphicon glyphicon-trash"></i>
+			                <% end %>
+		          </div>
+		        </td>  
+		    </tr>
+		    <% end %>
+		    <% end %>
+		<% end %>
+		</tbody>
+		</table>		
+    <% else %>
+    <h3>No grades</h3>
+    <% end %>
+
+   </div>
+</div> <!-- /rows -->
+
+

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  grade: 1
+  date: 2015-08-12
+  description: MyText
+  user_id: 
+  subject_id: 
+
+two:
+  grade: 1
+  date: 2015-08-12
+  description: MyText
+  user_id: 
+  subject_id: 
