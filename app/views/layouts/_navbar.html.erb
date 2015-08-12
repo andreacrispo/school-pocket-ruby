@@ -12,8 +12,10 @@
         <% if is_logged_in? %>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                   <li>  <%= link_to "Subjects", subjects_path %></li>
-                   <li>  <%= link_to "Grades", grades_path %></li>
+                   <li <%= "class=active" if current_page?(grades_path)%> >
+                        <%= link_to "Grades", grades_path %></li>
+                   <li <%= "class=active" if current_page?(subjects_path)%> >
+                        <%= link_to "Subjects", subjects_path %></li>
                    <li> <a href=""></a></li>
             </ul>
 
