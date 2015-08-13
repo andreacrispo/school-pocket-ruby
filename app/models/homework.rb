@@ -10,4 +10,9 @@ class Homework < ActiveRecord::Base
   validates :deadline, presence: true
   validates :priority, presence: true
 
+  def set_completed
+  	true
+  end
+
+
 end

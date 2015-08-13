@@ -54,6 +54,13 @@ class HomeworksController < ApplicationController
     redirect_to request.referrer
   end
 
+  # /patch homeworks/<id>/toggle_complete
+  def toggle_complete 
+    @homework = Homework.find(params[:id])  
+    @homework.toggle!(:completed)  
+    redirect_to homeworks_url
+  end  
+
 
   private
     def homework_params

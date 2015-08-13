@@ -1,0 +1,7 @@
+<%= link_to toggle_complete_homework_path(homework), method: :patch , class:'btn btn-primary' do %>
+	<% if homework.completed %>    	
+		<i class="glyphicon glyphicon-remove-circle"></i> 
+	<%else%>
+	 <i class="glyphicon glyphicon-ok-circle"></i>
+	<% end %>
+<% end %>

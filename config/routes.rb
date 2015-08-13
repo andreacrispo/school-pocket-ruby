@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   resources :users
   resources :subjects
   resources :grades  
-  resources :homeworks
+  resources :homeworks do
+    patch 'toggle_complete', on: :member 
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

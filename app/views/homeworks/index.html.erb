@@ -38,6 +38,7 @@
 
 		        <td id='no_style'> 
 		          <div class='btn-group' >
+		           <%= render 'completed_toggle', homework:homework %>
 	                <%= link_to edit_homework_path(homework), class:'btn btn-primary' do %>
 	                     <i class="glyphicon glyphicon-pencil"></i>
 	                <% end %>
@@ -47,9 +48,9 @@
 		          </div>
 		        </td>    
 			    </tr>
+			<% end %>
 			</tbody>
 			</table>
-			<% end %>
     <% else %>
     <h3>No homeworks</h3>
     <% end %>

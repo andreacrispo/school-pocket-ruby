@@ -22,7 +22,7 @@
                 <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
                      <i class="glyphicon glyphicon-pencil"></i>
                 <% end %>
-                <%= link_to subject , method: :delete, class:'btn btn-primary' do %>
+                <%= link_to subject , method: :delete, class:'btn btn-primary',  data: { confirm: "Are you sure?" } do %>
                      <i class="glyphicon glyphicon-trash"></i>
                 <% end %>
               </div>
