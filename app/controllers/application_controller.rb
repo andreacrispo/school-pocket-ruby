@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private 
+
 	def authenticate_user
 	  if !is_logged_in?
 		 flash[:danger] = "Please log in."
 		 redirect_to login_url
 	  end
 	end
-
 
 	def correct_user
       @user = User.find(params[:id])
