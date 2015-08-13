@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812140510) do
+ActiveRecord::Schema.define(version: 20150813125910) do
 
   create_table "grades", force: :cascade do |t|
     t.integer  "grade"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20150812140510) do
 
   add_index "grades", ["subject_id"], name: "index_grades_on_subject_id"
   add_index "grades", ["user_id"], name: "index_grades_on_user_id"
+
+  create_table "homeworks", force: :cascade do |t|
+    t.text     "description"
+    t.date     "deadline"
+    t.boolean  "completed"
+    t.integer  "priority"
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "homeworks", ["subject_id"], name: "index_homeworks_on_subject_id"
+  add_index "homeworks", ["user_id"], name: "index_homeworks_on_user_id"
 
   create_table "subjects", force: :cascade do |t|
     t.string   "name"

@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  get 'homeworks/index'
+
+  get 'homeworks/edit'
+
+  get 'homeworks/new'
+
   root 'sessions#new'
 
   get    'login'        => 'sessions#new'
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :subjects
   resources :grades  
-
+  resources :homeworks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

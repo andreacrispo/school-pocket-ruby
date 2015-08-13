@@ -16,7 +16,8 @@
                         <%= link_to "Grades", grades_path %></li>
                    <li <%= "class=active" if current_page?(subjects_path)%> >
                         <%= link_to "Subjects", subjects_path %></li>
-                   <li> <a href=""></a></li>
+                   <li <%= "class=active" if current_page?(homeworks_path)%> >
+                        <%= link_to "Homeworks", homeworks_path %></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
