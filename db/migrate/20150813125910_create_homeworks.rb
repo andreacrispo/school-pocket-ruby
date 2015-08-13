@@ -3,7 +3,7 @@ class CreateHomeworks < ActiveRecord::Migration
     create_table :homeworks do |t|
       t.text :description
       t.date :deadline
-      t.boolean :completed
+      t.boolean :completed, default: false
       t.integer :priority
       t.references :user, index: true, foreign_key: true
       t.references :subject, index: true, foreign_key: true

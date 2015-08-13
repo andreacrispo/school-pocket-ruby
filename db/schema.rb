@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20150813125910) do
   create_table "homeworks", force: :cascade do |t|
     t.text     "description"
     t.date     "deadline"
-    t.boolean  "completed"
+    t.boolean  "completed",   default: false
     t.integer  "priority"
     t.integer  "user_id"
     t.integer  "subject_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "homeworks", ["subject_id"], name: "index_homeworks_on_subject_id"

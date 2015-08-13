@@ -1,2 +1,14 @@
-<h1>Homeworks#new</h1>
-<p>Find me in app/views/homeworks/new.html.erb</p>
+<div class="page-header">
+<h1></h1>
+</div>
+
+<div class='row'> 
+	<div class="col-md-4"></div>
+	<div class="col-md-4 well shadow-z-4">
+	<%= form_for @homework do |f| %>
+		<%= render 'field_form', f:f, submit_string:"Add homework" %>
+	<% end %>
+	</div>
+	<div class="col-md-4"></div>
+
+</div>

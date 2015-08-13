@@ -28,8 +28,8 @@
 			<% @grades.each do |grade| %>
 			<% if subject.id == grade.subject_id %>
 		    <tr>  
-		        <td> <%= grade.date.strftime("%m/%d/%Y") %> </td> 
-		        <td> <%= grade.grade%>  </td>
+		        <td><%= grade.date.strftime("%m/%d/%Y") %> </td> 
+		        <td><%= grade.grade%>  </td>
 		        <td><%=  grade.description%></td> 
 		        <td id='no_style'> 
 		          <div class='btn-group' >

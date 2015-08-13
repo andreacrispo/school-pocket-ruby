@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private 
-
 	def authenticate_user
 	  if !is_logged_in?
 		 flash[:danger] = "Please log in."

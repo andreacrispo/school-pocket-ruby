@@ -1,0 +1,14 @@
+<%= render 'shared/error_msg', object: f.object %>
+<%= f.label :description %>
+<%= f.text_area  :description, class: 'form-control' %>
+
+<%= f.label :subject_id %>
+<%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {:class=>'form-control'})  %>
+<%= f.label :deadline %>
+<%= f.date_field  :deadline, class: 'form-control' %>
+
+<%= f.label :priority %>
+<%= select(:homework, :priority, options_for_select([['High', 0], ['Medium', 1],['Low', 2]]),
+	{}, {:class=>'form-control'}) %>
+
+<%= f.submit submit_string, class: "btn btn-primary" %>
