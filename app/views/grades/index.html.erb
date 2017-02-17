@@ -2,7 +2,9 @@
 
 <div class="page-header">
    <h1>  Grades
-    <%= link_to "Add Grade", new_grade_path, class:"btn btn-primary pull-right" %>
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_grade">
+      New grade
+    </button>
    </h1>
 </div>
 
@@ -10,43 +12,23 @@
    <div class="col-md-12">
     <% if @grades.any? %>
 
-		<table  class="table table-bordered" >
+		<table
+            data-toggle="table"
+            data-sort-name="grade"
+            data-sort-order="desc"
+            data-url="grades.json" >
 		<thead>
-		    <tr>  
-		        <th>Date</th> 
-		        <th>Grade</th>
-		        <th>Description</th>   
-		        <th  class="col-md-2" id='no_style' ></th>  
+		    <tr>
+		        <th data-field="date" data-sortable="true">Date</th>
+		        <th data-field="grade"  data-sortable="true">Grade</th>
+		        <th data-field="description">Description</th>
+            <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
+
 		    </tr>
 		</thead>
-		<tbody>
+		</table>
 
-		<% @subjects.each do |subject| %>
-			  <tr>  
-			  <th colspan='4' ><%= subject.name %> </th>
-			  </tr>
-			<% @grades.each do |grade| %>
-			<% if subject.id == grade.subject_id %>
-		    <tr>  
-		        <td><%= grade.date.strftime("%m/%d/%Y") %> </td> 
-		        <td><%= grade.grade%>  </td>
-		        <td><%=  grade.description%></td> 
-		        <td id='no_style'> 
-		          <div class='btn-group' >
-			                <%= link_to edit_grade_path(grade), class:'btn btn-primary' do %>
-			                     <i class="glyphicon glyphicon-pencil"></i>
-			                <% end %>
-			                <%= link_to grade , method: :delete, class:'btn btn-primary' do %>
-			                     <i class="glyphicon glyphicon-trash"></i>
-			                <% end %>
-		          </div>
-		        </td>  
-		    </tr>
-		    <% end %>
-		    <% end %>
-		<% end %>
-		</tbody>
-		</table>		
+
     <% else %>
     <h3>No grades</h3>
     <% end %>
@@ -55,3 +37,22 @@
 </div> <!-- /rows -->
 
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="new_grade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="new_grade_label">Add new grade</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @grade do |f| %>
+      		<%= render 'field_form', f:f, submit_string:"Add grade" %>
+      	<% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

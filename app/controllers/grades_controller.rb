@@ -1,22 +1,28 @@
 class GradesController < ApplicationController
 
   before_action :authenticate_user
-  
+
   # get /grades
   def index
-    @grades  = current_user.grades 
-    @subjects = current_user.subjects 
+
+    @grades = current_user.grades
+    @grade = Grade.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @grades }
+    end
   end
 
   def show
   end
 
-  # get /grades/new 
+  # get /grades/new
   def new
     @grade = Grade.new
     # render grade form
   end
-  
+
   # post /grades
   def create
      @grade = current_user.grades.build(grade_params)
@@ -32,7 +38,7 @@ class GradesController < ApplicationController
 
   # /get /grades/<id>/edit
   def edit
-     @grade = Grade.find( params[:id])
+     @grade = Grade.find(params[:id])
      # render grade form
   end
 
