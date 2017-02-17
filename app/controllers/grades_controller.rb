@@ -55,12 +55,18 @@ class GradesController < ApplicationController
   end
 
   # /delete grades/<id>
+  # /delete grades/<id>.json
   def destroy
-    Grade.find(params[:id]).destroy
-    flash[:success] = "grade deleted"
-    redirect_to request.referrer
-  end
+    grade = Grade.find(params[:id])
+    grade.destroy
 
+    #flash[:success] = "grade deleted"
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
+  end
 
   private
     def grade_params

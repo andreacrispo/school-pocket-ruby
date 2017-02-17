@@ -2,29 +2,32 @@
 
 function actionFormatter(value, row, index) {
     return [
-        '<a class="like" href="javascript:void(0)" title="Like">',
-        '<i class="glyphicon glyphicon-heart"></i>',
+        '<a class="edit btn btn-primary"  href="javascript:void(0)"  title="Edit">',
+        '<i class="glyphicon glyphicon-pencil"></i>',
         '</a>',
-        '<a class="edit ml10" href="javascript:void(0)" title="Edit">',
-        '<i class="glyphicon glyphicon-edit"></i>',
-        '</a>',
-        '<a class="remove ml10" href="javascript:void(0)" title="Remove">',
-        '<i class="glyphicon glyphicon-remove"></i>',
+        '<a class="remove btn btn-primary" href="javascript:void(0)" title="Remove">',
+        '<i class="glyphicon glyphicon-trash"></i>',
         '</a>'
     ].join('');
 }
 
 window.actionEvents = {
-    'click .like': function (e, value, row, index) {
-        alert('You click like icon, row: ' + JSON.stringify(row));
-        console.log(value, row, index);
-    },
     'click .edit': function (e, value, row, index) {
-        alert('You click edit icon, row: ' + JSON.stringify(row));
-        console.log(value, row, index);
+      var url_to_edit = '/grades/' + row.id + '/edit';
+      $(window.location).attr('href', url_to_edit);
     },
     'click .remove': function (e, value, row, index) {
-        alert('You click remove icon, row: ' + JSON.stringify(row));
-        console.log(value, row, index);
+      var url_to_delete = '/grades/' + row.id;
+      $.ajax({
+            url: url_to_delete,
+            type: 'delete',
+            dataType: "json",
+            success: function(result){
+               $('#grades_table').bootstrapTable('removeByUniqueId', row.id);
+             },
+             error: function () {
+               console.log("error");
+             }
+      });
     }
 };
