@@ -7,7 +7,7 @@ class GradesController < ApplicationController
 
     @grades = current_user.grades
     @grade = Grade.new
-
+    @avg = GradesHelper.weighted_average(@grades)
     respond_to do |format|
       format.html
       format.json { render json: @grades }
@@ -70,7 +70,7 @@ class GradesController < ApplicationController
 
   private
     def grade_params
-      params.require(:grade).permit(:grade,:date, :subject_id, :description)
+      params.require(:grade).permit(:grade,:date, :subject_id, :description, :credit)
     end
 
 

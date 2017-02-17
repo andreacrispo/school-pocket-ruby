@@ -16,12 +16,13 @@
             data-toggle="table"
             data-sort-name="grade"
             data-sort-order="desc"
-            data-unique-id="id"    
+            data-unique-id="id"
             data-url="grades.json" >
 		<thead>
 		    <tr>
 		        <th data-field="date"  data-sortable="true">Date</th>
 		        <th data-field="grade"  data-sortable="true">Grade</th>
+            <th data-field="credit"  data-sortable="true">Credit</th>
 		        <th data-field="description">Description</th>
             <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
 
@@ -37,7 +38,9 @@
    </div>
 </div> <!-- /rows -->
 
-
+<div class="row">
+  <h1> Weighted Average <%= @avg %></h1>
+</div>
 
 
 <!-- Modal -->

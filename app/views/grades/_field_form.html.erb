@@ -1,6 +1,10 @@
 <%= render 'shared/error_msg', object: f.object %>
 <%= f.label :grade %>
-<%= f.number_field  :grade, class: 'form-control' %>
+<%= f.number_field  :grade, class: 'form-control', min: 1 %>
+
+<%= f.label :credit %>
+<%= f.number_field  :credit, class: 'form-control', min: 1 %>
+
 
 <%= f.label :subject_id %>
 <%= f.collection_select(:subject_id, Subject.all, :id, :name, {}, {:class=>'form-control'})  %>
