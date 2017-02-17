@@ -1,21 +1,22 @@
 class HomeworksController < ApplicationController
-  
+
   before_action :authenticate_user
-  
+
   # get /homeworks
   def index
-    @homeworks = current_user.homeworks 
+    @homeworks = current_user.homeworks
+    @homework = Homework.new 
   end
 
   def show
   end
 
-  # get /homeworks/new 
+  # get /homeworks/new
   def new
-    @homework = Homework.new 
+    @homework = Homework.new
     # render homework form
   end
-  
+
   # post /homeworks
   def create
      @homework = current_user.homeworks.build(homework_params)
@@ -55,11 +56,11 @@ class HomeworksController < ApplicationController
   end
 
   # /patch homeworks/<id>/toggle_complete
-  def toggle_complete 
-    @homework = Homework.find(params[:id])  
-    @homework.toggle!(:completed)  
+  def toggle_complete
+    @homework = Homework.find(params[:id])
+    @homework.toggle!(:completed)
     redirect_to homeworks_url
-  end  
+  end
 
 
   private

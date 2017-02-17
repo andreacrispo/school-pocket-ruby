@@ -2,7 +2,9 @@
 
 <div class="page-header">
    <h1>  Homeworks
-    <%= link_to "Add homework", new_homework_path, class:"btn btn-primary pull-right" %>
+     <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_homework">
+       New homeworks
+     </button>
    </h1>
 </div>
 
@@ -11,32 +13,32 @@
     <% if @homeworks.any? %>
 			<table  class="table" >
 			<thead>
-			    <tr>  
-			        <th>Date</th> 
+			    <tr>
+			        <th>Date</th>
 			        <th>Homework</th>
-			        <th>Subject</th>   
+			        <th>Subject</th>
 			        <th  class="col-md-2"> Priority</th>
-			        <th  class="col-md-2" id='no_style'  ></th>  
+			        <th  class="col-md-2" id='no_style'  ></th>
 			    </tr>
 			</thead>
 			<tbody>
 
 			<% @homeworks.each do |homework|  %>
-			   <tr class="<%= homework.completed ? "success" : "" %>">                
-		        <td> <%= homework.deadline.strftime("%m/%d/%Y") %> </td> 
+			   <tr class="<%= homework.completed ? "success" : "" %>">
+		        <td> <%= homework.deadline.strftime("%m/%d/%Y") %> </td>
 		        <td> <%= homework.description %> </td>
 		    	<td> <%= homework.subject.name %> </td>
 		        <td>
 		       		<% if homework.priority == 2  %>
 		          		<span class="label label-default">Low</span>
 		        	<% elsif homework.priority == 1  %>
-		         		 <span class="label label-success">Normal</span>  
+		         		 <span class="label label-success">Normal</span>
 		        	<% else homework.priority == 0 %>
 		          		 <span class="label label-danger">High</span>
 		        	<% end %>
 		        </td>
 
-		        <td id='no_style'> 
+		        <td id='no_style'>
 		          <div class='btn-group' >
 		           <%= render 'completed_toggle', homework:homework %>
 	                <%= link_to edit_homework_path(homework), class:'btn btn-primary' do %>
@@ -46,7 +48,7 @@
 	                     <i class="glyphicon glyphicon-trash"></i>
 	                <% end %>
 		          </div>
-		        </td>    
+		        </td>
 			    </tr>
 			<% end %>
 			</tbody>
@@ -59,3 +61,21 @@
 </div> <!-- /rows -->
 
 
+<!-- Modal -->
+<div class="modal fade" id="new_homework" tabindex="-1" role="dialog" aria-labelledby="new_homework_label">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content well">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="new_homework_label">Add new homework</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @homework do |f| %>
+      		<%= render 'field_form', f:f, submit_string:"Add homework" %>
+      	<% end %>
+        <br />
+      </div>
+
+    </div>
+  </div>
+</div>

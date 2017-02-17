@@ -1,21 +1,22 @@
 class SubjectsController < ApplicationController
-  
+
   before_action :authenticate_user
-  
+
   # get /subjects
   def index
-    @subjects = current_user.subjects 
+    @subjects = current_user.subjects
+      @subject = Subject.new 
   end
 
   def show
   end
 
-  # get /subjects/new 
+  # get /subjects/new
   def new
-    @subject = Subject.new 
+    @subject = Subject.new
     # render subject form
   end
-  
+
   # post /subjects
   def create
      @subject = current_user.subjects.build(subject_params)

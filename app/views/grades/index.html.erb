@@ -40,9 +40,9 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="new_grade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
+<div class="modal fade" id="new_grade" tabindex="-1" role="dialog" aria-labelledby="new_grade_label">
+  <div class="modal-dialog " role="document">
+    <div class="modal-content well">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="new_grade_label">Add new grade</h4>
@@ -51,6 +51,7 @@
         <%= form_for @grade do |f| %>
       		<%= render 'field_form', f:f, submit_string:"Add grade" %>
       	<% end %>
+        <br />
       </div>
 
     </div>
