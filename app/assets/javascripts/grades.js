@@ -1,5 +1,4 @@
 
-
 function actionFormatter(value, row, index) {
     return [
         '<a class="edit btn btn-primary"  href="javascript:void(0)"  title="Edit">',
