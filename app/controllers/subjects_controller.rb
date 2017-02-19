@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
   # get /subjects
   def index
     @subjects = current_user.subjects
-      @subject = Subject.new 
+    @subject = Subject.new 
   end
 
   def show

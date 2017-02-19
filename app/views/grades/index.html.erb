@@ -22,8 +22,8 @@
 		    <tr>
 		        <th data-field="date"  data-sortable="true">Date</th>
 		        <th data-field="grade"  data-sortable="true">Grade</th>
+            <th data-field="subject.name">Subject</th>
             <th data-field="credit"  data-sortable="true">Credit</th>
-		        <th data-field="description">Description</th>
             <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
 
 		    </tr>
@@ -77,6 +77,8 @@
     var labels = [], data=[];
     data_grades.forEach(function(d) {
       labels.push(d.date);
+      // Using date or subject ?
+      //labels.push(d.subject.name);
       data.push(parseFloat(d.grade));
     });
      var ctx = $("#chart_grades")
