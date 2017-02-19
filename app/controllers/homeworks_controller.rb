@@ -6,6 +6,12 @@ class HomeworksController < ApplicationController
   def index
     @homeworks = current_user.homeworks
     @homework = Homework.new 
+    respond_to do |format|
+        format.html
+        format.json { 
+          render json: @homeworks.to_json(:include => { :subject => { :only => :name }})
+        }
+    end
   end
 
   def show
@@ -51,15 +57,22 @@ class HomeworksController < ApplicationController
   # /delete homeworks/<id>
   def destroy
     Homework.find(params[:id]).destroy
-    flash[:success] = "Homework deleted"
-    redirect_to request.referrer
+    #flash[:success] = "Homework deleted"
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
   end
 
   # /patch homeworks/<id>/toggle_complete
   def toggle_complete
     @homework = Homework.find(params[:id])
     @homework.toggle!(:completed)
-    redirect_to homeworks_url
+    respond_to do |format|
+      format.html { redirect_to homeworks_url }
+      format.json { head :no_content }
+    end
   end
 
 

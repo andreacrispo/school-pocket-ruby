@@ -30,8 +30,6 @@
 		</thead>
       <!-- I dati verrano riempiti utilizzando bootstrap-table tramite una richiesta ad un file json -->
 		</table>
-
-
     <% else %>
     <h1>There aren't grades</h1>
     <% end %>
@@ -71,44 +69,5 @@
 
 <% content_for :extra_js do %>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script type="text/javascript">
-
-  function create_chart(data_grades) {
-    var labels = [], data=[];
-    data_grades.forEach(function(d) {
-      labels.push(d.date);
-      // Using date or subject ?
-      //labels.push(d.subject.name);
-      data.push(parseFloat(d.grade));
-    });
-     var ctx = $("#chart_grades")
-     var myChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-              labels: labels, 
-              datasets: [{  
-                label: "Grades Chart",
-                fill: false,
-                backgroundColor: "rgba(75,192,192,0.4)",
-                borderColor: "rgba(75,192,192,1)",
-                pointBorderColor: "rgba(75,192,192,1)",
-                pointBackgroundColor: "#fff",
-                pointHoverBackgroundColor: "rgba(75,192,192,1)",
-                pointHoverBorderColor: "rgba(220,220,220,1)",
-                pointRadius: 5,
-                data: data
-              }]
-          }
-      }); 
-  }
-
-  $.ajax({url:"grades.json",dataType:"json"})
-  .fail(function(){alert("Fail")})
-  .done(function(data){
-    if(data.length != 0)
-       create_chart(data);
-    console.log(data);
-  });
-
-</script>
+<%= javascript_include_tag 'grades' %>
 <% end %>

@@ -15,5 +15,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-table.min.js
-//= require grades.js
 // require_tree .

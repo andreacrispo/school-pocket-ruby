@@ -4,16 +4,14 @@ class GradesController < ApplicationController
 
   # get /grades
   def index
-
     @grades = current_user.grades
-
     @grade = Grade.new
     @avg = GradesHelper.weighted_average(@grades)
     respond_to do |format|
-      format.html
-      format.json { 
-        render json: @grades.to_json(:include => { :subject => { :only => :name }})
-      }
+        format.html
+        format.json { 
+          render json: @grades.to_json(:include => { :subject => { :only => :name }})
+        }
     end
   end
 

@@ -11,48 +11,24 @@
 
    <div class="col-md-12">
     <% if @homeworks.any? %>
-			<table  class="table" >
-			<thead>
-			    <tr>
-			        <th>Date</th>
-			        <th>Homework</th>
-			        <th>Subject</th>
-			        <th  class="col-md-2"> Priority</th>
-			        <th  class="col-md-2" id='no_style'  ></th>
-			    </tr>
-			</thead>
-			<tbody>
-
-			<% @homeworks.each do |homework|  %>
-			   <tr class="<%= homework.completed ? "success" : "" %>">
-		        <td> <%= homework.deadline.strftime("%m/%d/%Y") %> </td>
-		        <td> <%= homework.description %> </td>
-		    	<td> <%= homework.subject.name %> </td>
-		        <td>
-		       		<% if homework.priority == 2  %>
-		          		<span class="label label-default">Low</span>
-		        	<% elsif homework.priority == 1  %>
-		         		 <span class="label label-success">Normal</span>
-		        	<% else homework.priority == 0 %>
-		          		 <span class="label label-danger">High</span>
-		        	<% end %>
-		        </td>
-
-		        <td id='no_style'>
-		          <div class='btn-group' >
-		           <%= render 'completed_toggle', homework:homework %>
-	                <%= link_to edit_homework_path(homework), class:'btn btn-primary' do %>
-	                     <i class="glyphicon glyphicon-pencil"></i>
-	                <% end %>
-	                <%= link_to homework , method: :delete, class:'btn btn-primary' do %>
-	                     <i class="glyphicon glyphicon-trash"></i>
-	                <% end %>
-		          </div>
-		        </td>
-			    </tr>
-			<% end %>
-			</tbody>
-			</table>
+	<table id="homeworks_table" class="table table-striped" 
+        data-toggle="table"
+        data-sort-name="priority"
+        data-sort-order="desc"
+        data-unique-id="id"
+        data-row-style="rowStyle"
+        data-url="homeworks.json" >
+	<thead>
+	    <tr>
+        <th data-field="deadline"  data-sortable="true">Date</th>
+	    <th data-field="description"  data-sortable="true">Homework</th>
+        <th data-field="subject.name">Subject</th>
+        <th data-field="priority"  data-sortable="true" data-formatter="priorityFormatter">Priority</th>
+        <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
+	    </tr>
+	</thead>
+ 		 <!-- I dati verrano riempiti utilizzando bootstrap-table tramite una richiesta ad un file json -->
+	</table>
     <% else %>
     <h3>No homeworks</h3>
     <% end %>
@@ -79,3 +55,9 @@
     </div>
   </div>
 </div>
+
+
+
+<% content_for :extra_js do %>
+<%= javascript_include_tag 'homeworks' %>
+<% end %>
