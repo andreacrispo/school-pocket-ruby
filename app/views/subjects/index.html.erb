@@ -10,26 +10,25 @@
 </div>
 
 
-   <div class="col-md-4"></div>
+   <div class="col-md-4">
+
+
+   </div>
 
    <div class="col-md-4">
     <% if @subjects.any? %>
 
         <% @subjects.each do |subject|  %>
-          <div class="well-lg panel panel-default shadow-z-4">
-           <div class="panel-body">
-            <h4>
-             <%= subject.name %>
-              <div class='btn-group pull-right'>
+
+           <div class="well well-sm">
+            <h2 class="text-center text-info"> <%= subject.name %> </h2>
+            <br />
                 <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
-                     <i class="glyphicon glyphicon-pencil"></i>
+                    Edit
                 <% end %>
-                <%= link_to subject , method: :delete, class:'btn btn-primary',  data: { confirm: "Are you sure?" } do %>
-                     <i class="glyphicon glyphicon-trash"></i>
-                <% end %>
-              </div>
-            </h4>
-           </div>
+                <%= link_to subject , method: :delete, class:'btn btn-primary pull-right',  data: { confirm: "Are you sure?" } do %>
+                  Remove
+                <% end %>    
           </div>
       <% end %>
     <% else %>
@@ -37,6 +36,9 @@
     <% end %>
 
    </div>
+   <!-- well-lg panel panel-default shadow-z-4 -->
+
+
 
    <div class="col-md-4"></div>
 </div> <!-- /rows -->
