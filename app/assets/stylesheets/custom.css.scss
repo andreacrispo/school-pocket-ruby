@@ -4,6 +4,9 @@
 
 body {
   background-color: #EEEEEE;
+  font-size: 16px;
+  line-height: 1.72222;
+  color: #34495e;
 }
 
 body,
@@ -21,6 +24,15 @@ h6,
   font-weight: 400;
 }
 
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+.vertical-align-middle {
+    vertical-align: middle;
+}
+
+.padding-bottom-3 {
+    padding-bottom: 3px;
+}
 
 /*==============================================================================*/
 .shadow-z-1 {
@@ -150,7 +162,7 @@ h6,
 }
 .table > tbody {
   font-size: 21px;
-  text-align: center; 
+  text-align: center;
 }
 .table > tbody + tbody {
   border-top: 1px solid rgba(0,0,0,0.20);
@@ -248,4 +260,3 @@ box-shadow: 0 3px 10px rgba(0,0,0,.23),0 3px 10px rgba(0,0,0,.16);
 border-radius: 2px;
 border: 0;
 }
- 

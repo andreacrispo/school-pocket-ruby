@@ -1,19 +1,16 @@
 
-<div class="row">
+
 
 <div class="page-header">
-   <h1>  Subjects
+   <h1>    <i class="material-icons md-48 vertical-align-middle padding-bottom-3">book</i>  Subjects
      <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#new_subject">
        New subject
      </button>
    </h1>
 </div>
 
-
-   <div class="col-md-4">
-
-
-   </div>
+<div class="row">
+   <div class="col-md-4"> </div>
 
    <div class="col-md-4">
     <% if @subjects.any? %>
@@ -22,13 +19,13 @@
 
            <div class="well well-sm">
             <h2 class="text-center text-info"> <%= subject.name %> </h2>
-            <br />
+            <hr />
                 <%= link_to edit_subject_path(subject), class:'btn btn-primary' do %>
                     Edit
                 <% end %>
                 <%= link_to subject , method: :delete, class:'btn btn-primary pull-right',  data: { confirm: "Are you sure?" } do %>
                   Remove
-                <% end %>    
+                <% end %>
           </div>
       <% end %>
     <% else %>

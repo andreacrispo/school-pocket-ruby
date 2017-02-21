@@ -43,7 +43,7 @@ window.actionEvents = {
                $('#homeworks_table').bootstrapTable('refresh');
              },
              error: function () {
-               alert("error");
+                console.log("error");
              }
       });
     },
