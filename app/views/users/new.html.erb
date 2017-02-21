@@ -1,0 +1,40 @@
+<% content_for :extra_css do %>
+<style type="text/css">
+	body{
+	 background-image: url('/assets/background.png');
+	}
+</style>
+<% end %>
+
+
+<div class="jumbotron">
+	<h1 class="text-center text-info">School Pocket </h1>
+	<h3  class="text-center">Web App to manage your grades </h3>
+</div>
+
+
+<div class='row'>
+	<div class="col-md-4"></div>
+
+	<div class="col-md-4">
+		<h3 class="alert  alert-info text-center"> Signup </h3>
+
+	<%= form_for(@user, url:signup_path, html: {class: "well well-lg"} ) do |f| %>
+	  <%= render 'shared/error_msg', object: f.object %>
+		<%= f.label :email %>
+		<%= f.email_field  :email, class: 'form-control' %>
+		<%= f.label :username %>
+		<%= f.text_field  :username, class: 'form-control' %>
+		<%= f.label :password %>
+		<%= f.password_field :password, class: 'form-control' %>
+		<%= f.label :password_confirmation, "Password confirmation" %>
+		<%= f.password_field :password_confirmation, class: 'form-control'  %>
+		<%= f.submit "Signup", class: "btn btn-primary pull-right" %>
+		<br />
+	<% end %>
+	</div>
+
+
+	<div class="col-md-4"></div>
+
+</div>

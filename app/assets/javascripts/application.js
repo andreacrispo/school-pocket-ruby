@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require bootstrap-table.min.js
 // require_tree .
+
+//$('.alert').fadeOut(5000);

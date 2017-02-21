@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get 'homeworks/index'
 
   get 'homeworks/edit'
@@ -11,13 +11,14 @@ Rails.application.routes.draw do
   get    'login'        => 'sessions#new'
   post   'login'        => 'sessions#create'
   delete 'logout'       => 'sessions#destroy'
-
+  get    'signup'       => 'users#new'
+  post   'signup'       => 'users#create'
 
   resources :users
   resources :subjects
-  resources :grades  
+  resources :grades
   resources :homeworks do
-    patch 'toggle_complete', on: :member 
+    patch 'toggle_complete', on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
